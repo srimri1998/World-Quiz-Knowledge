@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Quiz Gaming - Test Your Knowledge, Win Big!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quiz-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .countdown-timer {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        }
+
+        .option-card {
+            transition: all 0.2s ease;
+        }
+
+        .option-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .prize-gradient {
+            background: linear-gradient(135deg, #f5af19, #f12711);
+        }
+
+        .winner-glow {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="glass-effect fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        World Quiz Gaming
+                    </h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-yellow-300 transition-colors">Home</a>
+                    <a href="#how-it-works" class="hover:text-yellow-300 transition-colors">How It Works</a>
+                    <a href="#prizes" class="hover:text-yellow-300 transition-colors">Prizes</a>
+                    <a href="#play" class="hover:text-yellow-300 transition-colors">Play Now</a>
+                    <a href="#admin" class="hover:text-yellow-300 transition-colors">Admin</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="bg-gradient-to-r from-green-400 to-blue-500 px-6 py-2 rounded-full font-semibold hover:from-green-500 hover:to-blue-600 transition-all">
+                        Login
+                    </button>
+                    <button class="bg-gradient-to-r from-purple-400 to-pink-500 px-6 py-2 rounded-full font-semibold hover:from-purple-500 hover:to-pink-600 transition-all">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center">
+            <div class="glass-effect p-12 rounded-3xl max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 typewriter">
+                    Test Your Knowledge. Win Real Money.
+                </h2>
+                <p class="text-xl mb-8 text-gray-200">
+                    Join millions of players worldwide in the most exciting daily quiz competition. 
+                    Answer 5 questions in 65 seconds and stand a chance to win amazing cash prizes!
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="glass-effect p-6 rounded-2xl text-center">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-rupee-sign text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Rs 19 Entry</h3>
+                        <p class="text-gray-300">Affordable fun with big rewards</p>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-2xl text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-trophy text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Daily Prizes</h3>
+                        <p class="text-gray-300">Win up to Rs 5000 daily</p>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-2xl text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Global Players</h3>
+                        <p class="text-gray-300">Join 1 crore participants worldwide</p>
+                    </div>
+                </div>
+
+                <button class="prize-gradient px-8 py-4 rounded-full text-xl font-bold hover:scale-105 transition-transform pulse-animation">
+                    <i class="fas fa-play-circle mr-2"></i>
+                    Play Today's Quiz - Rs 19
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Register & Verify</h3>
+                    <p class="text-gray-300">Create your account and verify your UPI for prize collection</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pay Entry Fee</h3>
+                    <p class="text-gray-300">Pay Rs 19 to participate in today's quiz</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Answer Questions</h3>
+                    <p class="text-gray-300">5 questions, 13 seconds each. Be quick and accurate!</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Win Prizes</h3>
+                    <p class="text-gray-300">Top performers get cash prizes transferred to their UPI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Daily Prize Distribution</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="glass-effect p-8 rounded-3xl text-center winner-glow">
+                    <div class="w-24 h-24 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-crown text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Rank 1-19</h3>
+                    <p class="text-3xl font-bold text-yellow-300 mb-2">Rs 5,000</p>
+                    <p class="text-gray-300">Each winner receives Rs 5000</p>
+                </div>
+                
+                <div class="glass-effect p-8 rounded-3xl text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-medal text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Rank 20-1000</h3>
+                    <p class="text-3xl font-bold text-blue-300 mb-2">Rs 1,000</p>
+                    <p class="text-gray-300">Each winner receives Rs 1000</p>
+                </div>
+                
+                <div class="glass-effect p-8 rounded-3xl text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">1 Crore Players</h3>
+                    <p class="text-3xl font-bold text-green-300 mb-2">Rs 19</p>
+                    <p class="text-gray-300">Entry fee per participant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interface -->
+    <section id="play" class="py-20 px-6 hidden">
+        <div class="container mx-auto max-w-2xl">
+            <div class="glass-effect p-8 rounded-3xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Today's Quiz</h2>
+                    <div class="countdown-timer inline-block px-6 py-2 rounded-full text-2xl font-mono">
+                        13s
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Question 1/5</h3>
+                    <p class="text-lg bg-white bg-opacity-10 p-4 rounded-xl">
+                        Which planet is known as the Red Planet?
+                    </p>
+                </div>
+                
+                <div class="grid gap-4 mb-8">
+                    <div class="option-card glass-effect p-4 rounded-xl cursor-pointer hover:bg-white hover:bg-opacity-10">
+                        A) Venus
+                    </div>
+                    <div class="option-card glass-effect p-4 rounded-xl cursor-pointer hover:bg-white hover:bg-opacity-10">
+                        B) Mars
+                    </div>
+                    <div class="option-card glass-effect p-4 rounded-xl cursor-pointer hover:bg-white hover:bg-opacity-10">
+                        C) Jupiter
+                    </div>
+                    <div class="option-card glass-effect p-4 rounded-xl cursor-pointer hover:bg-white hover:bg-opacity-10">
+                        D) Saturn
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-300">Selected: None</span>
+                    <button class="bg-gradient-to-r from-green-400 to-blue-500 px-6 py-2 rounded-full font-semibold">
+                        Next Question
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="admin" class="py-20 px-6 hidden">
+        <div class="container mx-auto max-w-4xl">
+            <div class="glass-effect p-8 rounded-3xl">
+                <h2 class="text-3xl font-bold text-center mb-8">Admin Panel</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Add New Question</h3>
+                        <div class="space-y-4">
+                            <input type="text" placeholder="Question Text" class="w-full glass-effect p-3 rounded-lg">
+                            <input type="text" placeholder="Option A" class="w-full glass-effect p-3 rounded-lg">
+                            <input type="text" placeholder="Option B" class="w-full glass-effect p-3 rounded-lg">
+                            <input type="text" placeholder="Option C" class="w-full glass-effect p-3 rounded-lg">
+                            <input type="text" placeholder="Option D" class="w-full glass-effect p-3 rounded-lg">
+                            <select class="w-full glass-effect p-3 rounded-lg">
+                                <option>Correct Answer</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                            <button class="w-full bg-gradient-to-r from-green-400 to-blue-500 p-3 rounded-lg font-semibold">
+                                Add Question
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Schedule Quiz</h3>
+                        <div class="space-y-4">
+                            <input type="datetime-local" class="w-full glass-effect p-3 rounded-lg">
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-gradient-to-r from-blue-400 to-purple-500 p-3 rounded-lg font-semibold">
+                                    Set Live Time
+                                </button>
+                                <button class="flex-1 bg-gradient-to-r from-green-400 to-teal-500 p-3 rounded-lg font-semibold">
+                                    Go Live Now
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold mt-8 mb-4">Today's Statistics</h3>
+                        <div class="glass-effect p-4 rounded-lg">
+                            <p>Participants: 0</p>
+                            <p>Questions: 0</p>
+                            <p>Status: Not Live</p>
+                            <p>Next Live: 8:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-effect mt-20 py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">World Quiz Gaming</h3>
+                    <p class="text-gray-300">The ultimate daily quiz experience with real cash prizes for knowledge champions.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-yellow-300">Home</a></li>
+                        <li><a href="#how-it-works" class="text-gray-300 hover:text-yellow-300">How It Works</a></li>
+                        <li><a href="#prizes" class="text-gray-300 hover:text-yellow-300">Prizes</a></li>
+                        <li><a href="#play" class="text-gray-300 hover:text-yellow-300">Play Now</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-300">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-300">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-300">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-300">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 World Quiz Gaming. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        section.classList.add('hidden');
+                    });
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+
+            // Show home section by default
+            document.getElementById('home').classList.remove('hidden');
+
+            // Mock countdown timer
+            const timerElement = document.querySelector('.countdown-timer');
+            if (timerElement) {
+                let timeLeft = 13;
+                const timer = setInterval(() => {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft + 's';
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        timerElement.textContent = 'Time\'s Up!';
+                        timerElement.classList.add('bg-red-500');
+                    }
+                }, 1000);
+            }
+
+            // Option selection
+            const options = document.querySelectorAll('.option-card');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    options.forEach(opt => opt.classList.remove('bg-green-500'));
+                    this.classList.add('bg-green-500');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
